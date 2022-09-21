@@ -1,0 +1,19 @@
+.mainContentContainer {
+  display: flex;
+}
+
+.dashboardBlocksContainer {
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.dashboardRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  max-height: 25rem;
+}
