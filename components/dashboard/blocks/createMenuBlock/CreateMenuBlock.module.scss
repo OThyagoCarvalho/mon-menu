@@ -1,0 +1,31 @@
+.blockWrapper {
+  padding: 1rem;
+  display: flex;
+
+}
+
+.col {
+  flex-direction: column;
+}
+
+.modalWrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .form {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+
+    .formInput + .formInput {
+      margin-top: 0.5rem;
+    }
+  }
+}
+

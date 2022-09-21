@@ -32,7 +32,7 @@ export default function QrCodeBlock({ menuName }: QrCodeBlockPorps) {
     };
 
     return (
-        <Paper elevation={6} className={styles.mainContentContainer}>
+        <Paper elevation={3} className={styles.mainContentContainer}>
             <div>
                 <p> Este é o Endereço QrCode do seu Menu.</p>
                 <p> Escaneie ou use o atalho no menu para pré-visualizar.</p>
