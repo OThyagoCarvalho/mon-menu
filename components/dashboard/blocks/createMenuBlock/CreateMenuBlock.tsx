@@ -1,6 +1,7 @@
 import { Paper, Modal, TextField, Button } from '@mui/material';
 import { useState } from 'react';
 import { BsJournalPlus } from 'react-icons/bs';
+import { BiFoodMenu } from 'react-icons/bi';
 import styles from './CreateMenuBlock.module.scss';
 import '../../../../utils/stringUtils';
 import NormalizeCategories from '../../../../utils/stringUtils';
@@ -12,17 +13,13 @@ interface CreateMenuBlockProps {
     menu_list: Menu[];
 }
 
-export default function CreateMenuBlock({
-    id,
-    menu_list
-}: CreateMenuBlockProps) {
+export default function CreateMenuBlock({ menu_list }: CreateMenuBlockProps) {
     // handling modal visibility and preventing closing when clicking on the backdrop
     const [open, setOpen] = useState(false);
     const handleOpenModal = () => setOpen(true);
     const handleCloseModal = (
         reason: 'backdropClick' | 'escapeKeyDown' | 'clickCloseButton'
     ) => {
-        console.log(reason);
         if (reason && reason === 'backdropClick') {
             return;
         }
@@ -33,12 +30,15 @@ export default function CreateMenuBlock({
     const [name, setName] = useState('');
     const [categories, setCategories] = useState('');
     const handleFormSubmit = async (name: string, categories: string[]) => {
+        axios
+            .post('/api/hello', {
+                name: name,
+                categories: categories
+            })
+            .then(res => console.log(res));
 
-        axios.post('/api/hello', {
-            name: name,
-            categories: categories
-        })
-
+        setName('');
+        setCategories('');
     };
 
     // handling component render based on lenght of the prop passed
@@ -47,11 +47,15 @@ export default function CreateMenuBlock({
             <Paper className={styles.blockWrapper} elevation={3}>
                 <div className={styles.col}>
                     <div className={styles.blockHeader}>
-                        <h2> Parece que você ainda não criou nenhum Menu</h2>
+                        <h3> Você ainda não criou um Menu</h3>
                         <hr></hr>
                     </div>
                     <div className={styles.createMenuButton}>
-                        <button type="button" onClick={handleOpenModal}>
+                        <button
+                            className={styles.button}
+                            type="button"
+                            onClick={handleOpenModal}
+                        >
                             <BsJournalPlus /> Criar Menu
                         </button>
                     </div>
@@ -96,7 +100,12 @@ export default function CreateMenuBlock({
                         <div>
                             <Button
                                 className={styles.formButton}
-                                // onClick={handleFormSubmit}
+                                onClick={() =>
+                                    handleFormSubmit(
+                                        name,
+                                        NormalizeCategories(categories)
+                                    )
+                                }
                             >
                                 Salvar
                             </Button>
@@ -118,16 +127,25 @@ export default function CreateMenuBlock({
 
     return (
         <Paper className={styles.blockWrapper} elevation={3}>
-            <div>
+            <h3> Estes são os seus Menus</h3>
+            <div className={styles.menuListContainer}>
                 {menu_list.map(menu => (
-                    <div key={menu.id.toString()}>
-                        <p>{menu.id.toString()}</p>
-                        <p> {menu.name}</p>
-                        <button type="button">
-                            <BsJournalPlus /> Adicionar Outro Menu
-                        </button>
+                    <div
+                        className={styles.menuContainer}
+                        key={menu.id.toString()}
+                    >
+                        <BiFoodMenu className={styles.menuIcon} />
+                        <p>
+                            <span> #{menu.id.toString()}</span> {menu.name}
+                        </p>
                     </div>
                 ))}
+                <div className={styles.menuContainer}>
+                    <BiFoodMenu className={styles.menuIcon} />
+                    <button className={styles.button} type="button">
+                        <BsJournalPlus /> Seja Premium
+                    </button>
+                </div>
             </div>
         </Paper>
     );
