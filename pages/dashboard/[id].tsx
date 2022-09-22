@@ -7,7 +7,7 @@ import styles from '../../styles/DashboardPage.module.scss';
 import prisma from '../../lib/prisma';
 
 interface DashboardPageProps {
-    id: number;
+    userId: number;
     name: string;
     motto: string;
     email: string;
@@ -17,13 +17,12 @@ interface DashboardPageProps {
 }
 
 export default function Dashboard({
-    id,
+    userId,
     name,
     motto,
     menu_list
 }: DashboardPageProps) {
-    console.log(menu_list);
-    console.log(JSON.stringify(menu_list));
+    
     return (
         <main className={styles.mainContentContainer}>
             <Sidebar />
@@ -32,8 +31,8 @@ export default function Dashboard({
                     <GreetingsBlock name={name} motto={motto} />
                 </div>
                 <div className={styles.dashboardRow}>
-                    <CreateMenuBlock id={id} menu_list={[]} />
-                    <QrCodeBlock menuName={name} />
+                    <CreateMenuBlock userId={userId} menu_list={[]} />
+                    {/* <QrCodeBlock menuName={name} /> */}
                 </div>
             </div>
         </main>
@@ -48,10 +47,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
                 include: { categories: { include: { products: {} } } }
             }
         }
-    });    
+    });
+
+    
     return {
         props: {
-            id: userData?.id,
+            userId: userData?.id,
             name: userData?.name,
             motto: userData?.motto,
             email: userData?.email,

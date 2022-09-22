@@ -5,15 +5,17 @@ import { BiFoodMenu } from 'react-icons/bi';
 import styles from './CreateMenuBlock.module.scss';
 import '../../../../utils/stringUtils';
 import NormalizeCategories from '../../../../utils/stringUtils';
-import prisma from '../../../../lib/prisma';
 import axios from 'axios';
 
 interface CreateMenuBlockProps {
-    id: number;
+    userId: number;
     menu_list: Menu[];
 }
 
-export default function CreateMenuBlock({ menu_list }: CreateMenuBlockProps) {
+export default function CreateMenuBlock({
+    userId,
+    menu_list
+}: CreateMenuBlockProps) {
     // handling modal visibility and preventing closing when clicking on the backdrop
     const [open, setOpen] = useState(false);
     const handleOpenModal = () => setOpen(true);
@@ -27,17 +29,22 @@ export default function CreateMenuBlock({ menu_list }: CreateMenuBlockProps) {
     };
 
     //handling form inputs and submission
-    const [name, setName] = useState('');
+    const [menuName, setMenuName] = useState('');
     const [categories, setCategories] = useState('');
-    const handleFormSubmit = async (name: string, categories: string[]) => {
+    const handleFormSubmit = async (
+        userId: number,
+        menuName: string,
+        categories: string[]
+    ) => {
         axios
             .post('/api/hello', {
-                name: name,
-                categories: categories
+                userId,
+                menuName,
+                categories
             })
             .then(res => console.log(res));
 
-        setName('');
+        setMenuName('');
         setCategories('');
     };
 
@@ -74,8 +81,8 @@ export default function CreateMenuBlock({ menu_list }: CreateMenuBlockProps) {
                             placeholder='Ex: "Menu de Sábado"'
                             variant="outlined"
                             className={styles.formInput}
-                            value={name}
-                            onChange={e => setName(e.target.value)}
+                            value={menuName}
+                            onChange={e => setMenuName(e.target.value)}
                         />
                         <p>
                             Adicione algumas categorias separando-as por
@@ -102,7 +109,8 @@ export default function CreateMenuBlock({ menu_list }: CreateMenuBlockProps) {
                                 className={styles.formButton}
                                 onClick={() =>
                                     handleFormSubmit(
-                                        name,
+                                        userId,
+                                        menuName,
                                         NormalizeCategories(categories)
                                     )
                                 }
