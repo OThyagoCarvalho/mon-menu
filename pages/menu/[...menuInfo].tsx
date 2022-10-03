@@ -5,7 +5,7 @@ import prisma from '../../lib/prisma';
 
 export interface MenuPageProps {
     name: string;
-    motto: string;    
+    motto: string;
     menu_list: Menu[];
 }
 
@@ -16,11 +16,7 @@ export default function MenuPage({ name, motto, menu_list }: MenuPageProps) {
 
     return (
         <>
-            <CustomerMenu
-                name={name}
-                motto={motto}                
-                menu_list={menu_list}
-            />
+            <CustomerMenu name={name} motto={motto} menu_list={menu_list} />
         </>
     );
 }
