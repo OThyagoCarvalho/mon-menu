@@ -1,3 +1,15 @@
+:root {
+
+--font-size-sm: clamp(0.8rem, 0.16vw + 0.77rem, 0.89rem);
+--font-size-base: clamp(1rem, 0.32vw + 0.93rem, 1.19rem);
+--font-size-md: clamp(1.25rem, 0.57vw + 1.12rem, 1.65rem);
+--font-size-lg: clamp(1.56rem, 0.94vw + 1.36rem, 2.11rem);
+--font-size-xl: clamp(1.95rem, 1.48vw + 1.63rem, 2.81rem);
+--font-size-xxl: clamp(2.44rem, 2.25vw + 1.95rem, 3.75rem);
+--font-size-xxxl: clamp(3.05rem, 3.35vw + 2.32rem, 5rem);
+
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -17,8 +29,11 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+.maxContentContainer {
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .justify-center {
