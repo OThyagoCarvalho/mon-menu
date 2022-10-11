@@ -1,0 +1,27 @@
+.container {
+  background-color: black;
+  color: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.footerHead {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  padding: 2rem 0;
+  
+}
+
+.motto {
+  font-size: var(--font-size-base);
+  font-weight: 400;
+}
+
+.divider {
+  width: 100%;  
+  border-top: 1px solid white;
+  margin-bottom: 1rem;
+}

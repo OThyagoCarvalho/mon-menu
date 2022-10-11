@@ -1,4 +1,4 @@
-function NormalizeCategories(categories: string) {
+export function NormalizeCategories(categories: string) {
     let categoriesList = categories.split(',');
     for (let i = 0; i < categoriesList.length; i++) {
         categoriesList[i] = categoriesList[i].toLowerCase();
@@ -7,4 +7,7 @@ function NormalizeCategories(categories: string) {
     return categoriesList;
 }
 
-export default NormalizeCategories;
+export const FormatPrice = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+});

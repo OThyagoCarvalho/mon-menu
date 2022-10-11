@@ -1,0 +1,151 @@
+.container {
+  background-color: rgb(235,235,235);
+  width: 100%;
+  height: 90vh;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  @media (max-width: 1240px) {
+    height: fit-content;
+    padding: 50px 0;
+  }
+  
+}
+
+.whyContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @media (max-width: 1240px) {
+    height: fit-content;
+  }
+
+}
+
+.whyCardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 4rem;
+
+  @media (max-width: 1240px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    align-items: flex-start;
+  }
+}
+
+
+.whyCard {  
+  border-radius: 0.5rem;
+  max-width: 350px; 
+  margin-right: 4rem;
+  margin-bottom: 4rem;
+
+  @media (max-width: 1240px) {
+    margin-right: 0;
+    margin-bottom: 4rem;
+  }
+
+
+  h3 {
+    font-size: var(--font-size-md);
+    margin:0.5rem 0;
+    font-weight: 500;
+  }
+
+  p {
+    width: 100%;
+    font-size: var(--font-size-base);
+    color: #666;
+  }
+
+  span {
+    font-size: var(--font-size-sm);
+    background-color: red;
+    color: white;
+    border-radius: 0.25rem;
+    padding: 0.15rem 0.35rem;
+  }
+  .whyCardIcon {
+    width: 35px;
+    height: 35px;
+    color: red;
+  }
+}
+
+.whyText {
+  width: 70%;
+
+  @media (max-width: 1240px) {
+    width: 100%;
+    text-align: center;
+  }    
+
+  @media (max-width: 480px) {
+    
+    text-align: left;
+  }
+  
+
+  h2 {
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+ > p {
+    font-size: var(--font-size-base);
+    width: 50%;
+    color: #666;
+
+    @media (max-width: 1240px) {
+      width: 100%;
+      margin-top: 1rem;
+    }   
+  }
+}
+.whyImage {
+  width: 20%;
+  max-width: 300px;
+  min-width: 200px;
+  height: auto;
+  max-height: 700px;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+  z-index: 0;
+
+  @media (max-width: 1240px) {
+    display: none;
+    position: relative;
+  }
+  
+  
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem 2rem 0 0;
+    object-fit: cover;  
+    border: 10px solid #111;
+    border-bottom: none;  
+  }
+}
+
+.whyImage:hover {
+  cursor: pointer;  
+    
+}
+
