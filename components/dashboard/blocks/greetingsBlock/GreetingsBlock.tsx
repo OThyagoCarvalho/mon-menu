@@ -6,24 +6,39 @@ interface GreetingsBlockProps {
     motto?: string;
 }
 
-export default function GreetingsBlock({ name, motto }: GreetingsBlockProps) {
+export default function GreetingsBlock({
+    name = '',
+    motto = ''
+}: GreetingsBlockProps) {
     if (name && motto) {
         return (
             <div className={styles.mainContainer}>
-                    <h1 className="">Olá, {name}</h1>
-                    <p className="">{motto}</p>
-                {/* <Paper elevation={3} className={styles.blockWrapper}>
-                    
-                </Paper> */}
+                <h1>
+                    <span> Olá, </span>
+                    {name}
+                </h1>
+                <p>{motto}</p>
+            </div>
+        );
+    }
+
+    if (name && !motto) {
+        return (
+            <div className={styles.mainContainer}>
+                <h1>
+                    <span> Olá, </span>
+                    {name}
+                </h1>
+                <p>Este é seu painel de controle</p>
             </div>
         );
     }
     return (
         <div className={styles.mainContainer}>
-            <Paper elevation={3} className={styles.blockWrapper}>
-                <h1 className="">Bem-vindo</h1>
-                <p className="">Este é seu painel de controle</p>
-            </Paper>
+            <div className={styles.blockWrapper}>
+                <h1>Bem-vindo</h1>
+                <p>Este é seu painel de controle</p>
+            </div>
         </div>
     );
 }
