@@ -1,0 +1,41 @@
+.headerContainer {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  background-color: black;
+  color: white;
+}
+
+.maxContentContainer {
+  width: 100%;
+  height: 100%;  
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.headerContentContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.signInOutButton {
+  padding: 1rem 2rem;
+  border: none;
+  color: white;
+  font-weight: bold;
+  background-color: red;
+  border-radius: 1rem;
+}
+
+.signInOutButton:hover {
+  cursor: pointer;
+  filter: brightness(0.8);
+}
+
+.signInOutButton + .signInOutButton {
+  margin-left: 1rem;
+}
